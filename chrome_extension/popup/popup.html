@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camellia Tips — Luxury Sommelier</title>
+  <link rel="stylesheet" href="popup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Top Brand Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo-icon">
+          <svg viewBox="0 0 100 100" width="22" height="22">
+            <path d="M 50,10 C 70,25 75,55 50,85 C 25,55 30,25 50,10 Z" fill="url(#headerGold)"/>
+            <path d="M 50,20 L 50,75" stroke="#0B0F0D" stroke-width="2.5"/>
+            <defs>
+              <linearGradient id="headerGold" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#FCE8AA"/>
+                <stop offset="100%" stop-color="#D4AF37"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="title-main">CAMELLIA TIPS</span>
+          <span class="title-sub">LUXURY SOMMELIER</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a href="http://localhost:4321" target="_blank" class="server-status" id="webLinkBtn" title="Launch Website">
+          <span class="status-dot"></span>
+          <span class="status-text">Web App</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="steep">
+        <svg class="tab-icon" viewBox="0 0 24 24"><path d="M12 20a8 8 0 100-16 8 8 0 000 16zm0-18a10 10 0 110 20 10 10 0 010-20zm1 5h-2v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="currentColor"/></svg>
+        <span>Matrix</span>
+      </button>
+      <button class="tab-btn" data-tab="catalog">
+        <svg class="tab-icon" viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z" fill="currentColor"/></svg>
+        <span>Catalog</span>
+      </button>
+      <button class="tab-btn" data-tab="sommelier">
+        <svg class="tab-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="currentColor"/></svg>
+        <span>Sommelier</span>
+      </button>
+      <button class="tab-btn" data-tab="cellar">
+        <svg class="tab-icon" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" fill="currentColor"/></svg>
+        <span>Cellar</span>
+      </button>
+    </nav>
+
+    <!-- Tab 1: Steeping Matrix & Live Timer -->
+    <main class="tab-content active" id="tab-steep">
+      <div class="card steep-card">
+        <div class="steep-header">
+          <span class="card-tag">Precision Protocol</span>
+          <select id="teaPresetSelect" class="preset-dropdown">
+            <option value="ctc">Ancestral Brew — CTC Monsoon (100°C • 4m 30s)</option>
+            <option value="orthodox">Ancestral Brew — Orthodox Blend (85°C • 3m 45s)</option>
+            <option value="mogra">Legacy Leaf — Green Tea Mogra (78°C • 2m 15s)</option>
+            <option value="hyson">Legacy Leaf — Young Hyson (80°C • 2m 30s)</option>
+            <option value="gyokuro">Imperial Gyokuro Harvest (60°C • 2m 00s)</option>
+            <option value="puerh">Vintage Pu-erh Vault (95°C • 0m 45s)</option>
+          </select>
+        </div>
+
+        <!-- Timer Circle Visualization -->
+        <div class="timer-display-wrap">
+          <svg class="timer-ring-svg" viewBox="0 0 200 200">
+            <circle class="ring-bg" cx="100" cy="100" r="88" />
+            <circle class="ring-progress" id="timerProgressRing" cx="100" cy="100" r="88" />
+          </svg>
+          <div class="timer-inner">
+            <div class="timer-time" id="timerCountdown">04:30</div>
+            <div class="timer-meta">
+              <span class="meta-badge" id="tempBadge">🌡️ 100°C</span>
+              <span class="meta-badge" id="ratioBadge">⚖️ 2.5g / 150ml</span>
+            </div>
+            <div class="infusion-counter">
+              <span>Infusion <strong id="infusionNum">1</strong> of <strong id="infusionTotal">3</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timer Controls -->
+        <div class="timer-controls">
+          <button class="btn-time-adjust" id="btnMinus15">-15s</button>
+          <button class="btn-primary" id="btnStartPause">
+            <svg class="btn-icon" viewBox="0 0 24 24" id="playPauseIcon"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            <span id="btnStartText">START INFUSION</span>
+          </button>
+          <button class="btn-time-adjust" id="btnPlus15">+15s</button>
+        </div>
+
+        <div class="timer-footer">
+          <button class="btn-secondary" id="btnResetTimer">RESET</button>
+          <label class="toggle-label">
+            <input type="checkbox" id="chkAudioNotify" checked />
+            <span class="toggle-text">Desktop Alert & Sound</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Quick Steeping Notes -->
+      <div class="card notes-card">
+        <h4 class="notes-title">SOMMELIER STEEPING TIP</h4>
+        <p class="notes-desc" id="steepTipText">
+          Pre-heat your porcelain vessel with boiling water before adding leaves. For green tea varieties, allow water to rest for 60 seconds after boil to preserve delicate Mogra florals.
+        </p>
+      </div>
+    </main>
+
+    <!-- Tab 2: Rare Tea Catalog -->
+    <main class="tab-content" id="tab-catalog">
+      <div class="catalog-search-wrap">
+        <input type="text" id="catalogSearch" class="search-input" placeholder="Search leaves, notes, or provenance..." />
+      </div>
+
+      <div class="category-pills" id="categoryFilterPills">
+        <button class="pill active" data-cat="all">All</button>
+        <button class="pill" data-cat="ancestral-brew">Ancestral Brew</button>
+        <button class="pill" data-cat="monsoon-bliss">Monsoon Bliss</button>
+        <button class="pill" data-cat="legacy-leaf">Legacy Leaf</button>
+      </div>
+
+      <div class="catalog-list" id="catalogList">
+        <!-- Dynamically rendered catalog items -->
+      </div>
+    </main>
+
+    <!-- Tab 3: Sommelier Mood Matcher -->
+    <main class="tab-content" id="tab-sommelier">
+      <div class="card sommelier-card">
+        <div class="sommelier-header">
+          <span class="script-subtitle">The Sommelier’s Selection</span>
+          <h3 class="card-heading">Curated Brew Matcher</h3>
+        </div>
+
+        <div class="quiz-step">
+          <label class="quiz-label">Select Current State / Intention:</label>
+          <div class="mood-grid">
+            <button class="mood-btn active" data-mood="focus">
+              <span class="mood-emoji">🧠</span>
+              <span class="mood-title">Deep Focus</span>
+            </button>
+            <button class="mood-btn" data-mood="calm">
+              <span class="mood-emoji">🕯️</span>
+              <span class="mood-title">Evening Calm</span>
+            </button>
+            <button class="mood-btn" data-mood="morning">
+              <span class="mood-emoji">🌅</span>
+              <span class="mood-title">Morning Energy</span>
+            </button>
+            <button class="mood-btn" data-mood="dining">
+              <span class="mood-emoji">🍷</span>
+              <span class="mood-title">High Tea Pairing</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Match Result -->
+        <div class="match-result-card" id="sommelierMatchResult">
+          <span class="match-badge">RECOMMENDED MATCH</span>
+          <h4 class="match-name" id="matchTeaName">Ancestral Brew — Orthodox Blend</h4>
+          <p class="match-desc" id="matchTeaDesc">Rich in golden tips with natural sweetness and soft malt notes. Ideal for enhancing mental clarity without over-caffeinating.</p>
+          <div class="match-actions">
+            <button class="btn-primary-sm" id="btnLoadMatchedSteep">Load into Timer</button>
+            <a href="http://localhost:4321/collection" target="_blank" class="btn-secondary-sm">View in Catalog</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tea Wisdom Quote -->
+      <div class="card quote-card">
+        <p class="quote-text">"Tea is quiet time. It asks nothing of you except a few minutes of patience while water meets leaf."</p>
+        <span class="quote-author">— Sommelier Notes, Camellia Tips Cellar</span>
+      </div>
+    </main>
+
+    <!-- Tab 4: Private Cellar & Quick Access -->
+    <main class="tab-content" id="tab-cellar">
+      <div class="card cellar-card">
+        <span class="card-tag">MEMBERSHIP VAULT</span>
+        <h3 class="card-heading">Private Cellar Access</h3>
+        <p class="card-subtext">Enter your allocation access code or check member allocations.</p>
+        
+        <div class="key-input-wrap">
+          <input type="text" id="cellarKeyInput" class="key-input" placeholder="e.g. CT-CELLAR-2025" />
+          <button class="btn-gold-sm" id="btnVerifyKey">ACCESS</button>
+        </div>
+        <div id="keyFeedback" class="key-feedback"></div>
+      </div>
+
+      <!-- Quick Website Links -->
+      <div class="card links-card">
+        <h4 class="links-heading">DIRECT DESTINATIONS</h4>
+        <div class="links-grid">
+          <a href="http://localhost:4321/private-cellar" target="_blank" class="dest-link">
+            <span class="dest-icon">🏰</span>
+            <div class="dest-info">
+              <span class="dest-title">Private Cellar</span>
+              <span class="dest-sub">Vault Allocation & Storage</span>
+            </div>
+          </a>
+          <a href="http://localhost:4321/reserve" target="_blank" class="dest-link">
+            <span class="dest-icon">👑</span>
+            <div class="dest-info">
+              <span class="dest-title">Reserve Collection</span>
+              <span class="dest-sub">Rare Harvest Batches</span>
+            </div>
+          </a>
+          <a href="http://localhost:4321/collection" target="_blank" class="dest-link">
+            <span class="dest-icon">🍃</span>
+            <div class="dest-info">
+              <span class="dest-title">Tea Catalog</span>
+              <span class="dest-sub">Full Selection</span>
+            </div>
+          </a>
+          <a href="http://localhost:4321/story" target="_blank" class="dest-link">
+            <span class="dest-icon">📜</span>
+            <div class="dest-info">
+              <span class="dest-title">Brand Story</span>
+              <span class="dest-sub">Ancestral Provenance</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Saved Wishlist -->
+      <div class="card wishlist-card">
+        <div class="wishlist-header">
+          <span class="wishlist-title">Saved Wishlist (<span id="wishlistCount">0</span>)</span>
+          <button class="btn-clear-wishlist" id="btnClearWishlist">Clear</button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+          <div class="empty-wishlist">No saved teas yet. Click the heart icon in Catalog to save your favorite leaves.</div>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+/* Floating Quick Widget for Content Script */
+.ct-floating-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999999;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  animation: ctSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes ctSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ct-widget-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: #080C0A;
+  border: 1px solid #D4AF37;
+  border-radius: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 12px rgba(212, 175, 55, 0.3);
+  color: #E5E2E1;
+  font-size: 12px;
+}
+
+.ct-widget-logo {
+  font-size: 16px;
+}
+
+.ct-widget-text {
+  color: #FCE8AA;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ct-widget-btn {
+  padding: 5px 12px;
+  background: linear-gradient(135deg, #FCE8AA 0%, #D4AF37 100%);
+  border: none;
+  border-radius: 16px;
+  color: #080C0A;
+  font-weight: 700;
+  font-size: 11px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.ct-widget-btn:hover {
+  transform: scale(1.05);
+}
+
+.ct-widget-close {
+  background: none;
+  border: none;
+  color: #9A9895;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.ct-widget-close:hover {
+  color: #FFF;
+}
